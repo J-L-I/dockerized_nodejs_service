@@ -1,0 +1,14 @@
+---
+- name: app
+  hosts: myhosts
+  become: true
+  tasks:
+  - name: create directory for app
+    ansible.builtin.file:
+      path: /home/jli/basic_auth
+      state: directory
+      mode: "0755"
+  - name: run app
+      ansible.builtin.command: node basic_auth_app.js
+      args:
+        chdir: /home/jli/basic_auth
